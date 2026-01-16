@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+<category>
+<pattern>HELLO</pattern>
+<template>Hi! Do you watch football</template>
+</category>
+
+<category>
+<pattern>YES</pattern>
+<that>Hi! Do you watch football</that>
+<template>Amazing, which club do you support? I support the Spurs</template>
+</category>
+
+<category>
+<pattern>NO</pattern>
+<that>Hi! Do you watch football</that>
+<template>How not?! Its the most beautiful game in the world! Which club would you support if you had to choose?</template>
+</category>
+
+<category>
+<pattern>*</pattern>
+<that>Amazing, which club do you support? I support the Spurs</that>
+<template>
+<think><set name="club"><star/></set></think>
+Why did you end up choosing <get name="club"/>?
+</template>
+</category>
+
+<category>
+<pattern>*</pattern>
+<that>How not?! Its the most beautiful game in the world! Which club would you support if you had to choose?</that>
+<template>
+<think><set name="club"><star/></set></think>
+Why did you end up choosing <get name="club"/>?
+</template>
+</category>
+
+<category>
+<pattern>BECAUSE *</pattern>
+<template>Good to know! do you watch them a lot?</template>
+</category>
+
+<category>
+<pattern>YES</pattern>
+<that>Good to know! do you watch them a lot?</that>
+<template>
+<random>
+<li>Who is your favorite player?</li>
+<li>What position do you like?</li>
+<li>Which league do you prefer?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>NO</pattern>
+<that>Good to know! do you watch them a lot?</that>
+<template>You should! Who is your favorite player of <get name="club"/>?</template>
+</category>
+
+<topic name="players">
+
+<category>
+<pattern>*</pattern>
+<that>Who is your favorite player</that>
+<template>
+<think><set name="player"><star/></set></think>
+<condition name="player">
+<li value="MESSI">Ofcourse its Messi! Everyone says that</li>
+<li value="RONALDO">Ronaldo is the best choice! Because everyone knows he is the best right</li>
+<li value="SON">Son is a name you hear a lot! Everyone just likes him</li>
+<li value="NEYMAR">It is just a joy to watch Neymar isnt it</li>
+<li value="*">Wow good choice</li>
+</condition>
+Which position do you prefer, offense or defense
+</template>
+</category>
+
+</topic>
+
+<set name="position">
+offense
+defense
+midfield
+goalkeeper
+</set>
+
+<map name="role">
+offense forward
+defense defender
+midfield midfielder
+goalkeeper keeper
+</map>
+
+<category>
+<pattern>_ IN POSITION</pattern>
+<template>
+<think><set name="pos"><star/></set></think>
+Your choice maps to the role <map name="role"><star/></map>
+Which league do you follow
+</template>
+</category>
+
+<set name="league">
+premier
+laliga
+bundesliga
+seriea
+ligue1
+</set>
+
+<category>
+<pattern>_ IN LEAGUE</pattern>
+<template>
+<think><set name="league"><star/></set></think>
+<random>
+<li>The Premier League is very intense</li>
+<li>LaLiga has technical play</li>
+<li>Bundesliga has strong pressing</li>
+<li>Serie A values tactics</li>
+<li>Ligue 1 develops talent</li>
+</random>
+Want predictions for next matchday
+</template>
+</category>
+
+<category>
+<pattern>YES</pattern>
+<that>Want predictions for next matchday</that>
+<template>
+<random>
+<li>Your club wins</li>
+<li>Your club draws</li>
+<li>Your club loses</li>
+</random>
+Can I ask you something
+</template>
+</category>
+
+<category>
+<pattern>NO</pattern>
+<that>Want predictions for next matchday</that>
+<template>Okay. Can I ask you something</template>
+</category>
+
+<category>
+<pattern>YES</pattern>
+<that>Can I ask you something</that>
+<template>What do you enjoy most about football</template>
+</category>
+
+<category>
+<pattern>NO</pattern>
+<that>Can I ask you something</that>
+<template>Then I will ask anyway. What do you enjoy most about football</template>
+</category>
+
+<category>
+<pattern>*</pattern>
+<that>Then I will ask anyway. What do you enjoy most about football</that>
+<template>Cool. I enjoy tactics. Ask me anything about football</template>
+</category>
+
+<category>
+<pattern>*</pattern>
+<that>What do you enjoy most about football</that>
+<template>Cool. I enjoy tactics. Ask me anything about football</template>
+</category>
+
+<category>
+<pattern>BYE</pattern>
+<template>Goodbye</template>
+</category>
+
+</aiml>
